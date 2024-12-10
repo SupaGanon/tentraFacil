@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista Usuarios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="loadUsuarios()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="buscarUsuario()" placeholder="Buscar por nombre, usuario o estado"></ion-searchbar>
+  <div class="card-container">
+    <ion-card *ngFor="let user of filteredUsers" class="user-card">
+      <div class="imagen" align="center">
+        <ion-avatar>
+          <img *ngIf="user.photoUrl" [src]="user.photoUrl" alt="Foto del perfil" />
+          <img *ngIf="!user.photoUrl" alt="Silhouette of a person's head"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-item lines="none" class="estado">
+          <ion-label>Activo</ion-label>
+          <ion-toggle [(ngModel)]="user.activo" (ionChange)="cambiarEstadoUsuario(user.id_usuario)"></ion-toggle>
+          <ion-icon slot="end" color="danger" name="person-remove-outline" (click)="eliminarUsuario(user.id_usuario)"></ion-icon>
+        </ion-item>
+        <div class="nombre">
+          <ion-text>{{ user.id_usuario }}</ion-text>
+          <br />
+          <ion-text>{{ user.nombre }} {{ user.apellido }}</ion-text>
+          <br />
+        </div>
+        <ion-item lines="none" class="add" (click)="mostrarAgregarTarjeta(user.id_usuario)">
+          <ion-label>
+            <ion-row>
+              <ion-icon color="success" name="card-outline"></ion-icon>
+            </ion-row>
+            <ion-row>Agregar tarjeta</ion-row>
+          </ion-label>
+        </ion-item>
+      </div>
+      
+      <div class="lista">
+        <ion-list lines="none">
+          <ion-item *ngFor="let card of user.tarjetas; let i = index" class="tarjeta-item">
+            <ion-label>
+              Tarjeta {{ i + 1 }}: {{ card.UID }}
+            </ion-label>
+            <ion-toggle [(ngModel)]="card.activo" (ionChange)="cambiarEstadoTarjeta(card.UID, user.id_usuario)" [disabled]="!user.activo"></ion-toggle>
+            <ion-icon color="danger" name="trash-outline" (click)="eliminarTarjeta(user.id_usuario, card.UID)"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

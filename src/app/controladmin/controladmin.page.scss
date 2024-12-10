@@ -1,0 +1,21 @@
+/* Ajustar el tamaño de los iconos */
+ion-icon {
+    font-size: 80px; /* Ajusta el tamaño del icono */
+  }
+  
+  /* Estilo para que el icono y el label estén uno debajo del otro */
+  ion-row {
+    display: flex;
+    flex-direction: column; /* Coloca el icono y el texto uno debajo del otro */
+    justify-content: center; /* Centra verticalmente el contenido dentro del ion-row */
+    align-items: center; /* Centra el contenido horizontalmente */
+    text-align: center; /* Centra el texto del label */
+    margin-bottom: 15px; /* Ajusta el espacio entre los iconos */
+  }
+  
+  /* Aumenta el tamaño del texto en los labels */
+  ion-label.label-arriba {
+    font-size: 18px; /* Aumenta el tamaño del texto del label */
+    margin-top: 10px; /* Espacio entre el icono y el texto */
+  }
+  

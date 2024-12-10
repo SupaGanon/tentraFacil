@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-
+import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 

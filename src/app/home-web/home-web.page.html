@@ -1,0 +1,32 @@
+
+<ion-tabs>
+  <ion-tab-bar slot="top" scrollable>
+    <ion-tab-button tab="registro" href="/home-web/registro">
+      <ion-icon name="reader-outline"></ion-icon>
+      <ion-label>Historial</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="controladmin" href="/home-web/controladmin">
+      <ion-icon name="keypad-outline"></ion-icon>
+      <ion-label>Control remoto</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="crearperfil" href="/home-web/crearperfil">
+      <ion-icon name="person-add-outline"></ion-icon>
+      <ion-label>Crear perfil</ion-label>
+    </ion-tab-button>
+
+  <ion-tab-button tab="usuarios" href="/home-web/usuarios">
+    <ion-icon name="people-outline"></ion-icon>
+    <ion-label>Usuarios</ion-label>
+  </ion-tab-button>
+
+  <ion-buttons tab="cerrar sesion">
+    <ion-tab-button (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-tab-button>
+  </ion-buttons>
+  
+</ion-tab-bar>
+</ion-tabs>

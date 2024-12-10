@@ -1,20 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="pfContent">
+    <div align="center" class="imagen">
+      <ion-avatar>
+        <img *ngIf="photoUrl" [src]="photoUrl" alt="Foto del perfil" />
+        <!-- Si no hay foto, muestra una imagen predeterminada -->
+        <img *ngIf="!photoUrl" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+    </div>
+    <ion-item lines="none" class="nombre">
+      <ion-label class="ion-text-center">
+        <ion-text>{{id_usuario}}</ion-text>
+        <br>
+        <ion-text>{{nombre}} {{apellido}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-icon name="camera-outline"></ion-icon>
+  </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card class="opciones">
+    <ion-row>
+      <!-- Fila de generación de código -->
+      <ion-col class="ion-text-center" (click)="Abrir()">
+        <ion-icon name="power-outline" class="btn_pin"></ion-icon>
+        <ion-label>Abrir puerta</ion-label>
+      </ion-col>
+
+      <!-- Fila de generación de visita -->
+      <ion-col class="ion-text-center" (click)="pin()">
+        <ion-icon name="people-outline" class="btn_visitas"></ion-icon>
+        <ion-label>Generar visitas</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- Fila del botón de pánico -->
+  <ion-row class="panico">
+    <ion-col class="ion-text-center" (click)="showPanicAlert()">
+      <ion-icon name="close-circle-outline" color="danger" class="icon-panico"></ion-icon>
+      <ion-label class="label-panico">Botón de Pánico</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <!-- Fila del botón de cierre de sesión -->
+  <ion-row class="logout">
+    <ion-col class="ion-text-center" (click)="logout()">
+      <ion-icon name="log-out-outline" color="danger" class="icon-logout"></ion-icon>
+      <ion-label class="label-logout">Cerrar Sesión</ion-label>
+    </ion-col>
+  </ion-row>
 </ion-content>

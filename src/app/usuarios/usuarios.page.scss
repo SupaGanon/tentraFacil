@@ -1,0 +1,60 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 4-5 tarjetas por fila */
+  gap: 16px; /* Espacio entre las tarjetas */
+  padding: 16px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  height: 450px;
+  overflow: hidden;
+}
+
+.imagen {
+  ion-avatar {
+    height: 15vh;
+    width: 15vh;
+    border: 5px solid #c51111;
+    padding: 1px;
+  }
+}
+
+.nombre {
+  color: var(--custom-pfContent-background);
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.lista ion-item {
+  font-size: 14px;
+}
+
+.add {
+  margin-top: 15px;
+  ion-row {
+    justify-content: center;
+    ion-icon {
+      font-size: 5vh;
+    }
+  }
+}
+
+.eliminar {
+  text-align: center;
+  font-size: 5vh;
+}
+
+
+ion-list {
+  max-height: 150px; /* Altura máxima de la lista */
+  overflow-x: hidden; /* Ocultar barra de desplazamiento horizontal */
+  overflow-y: auto; /* Permitir scroll vertical si hay más de 150px de contenido */
+}
+
+

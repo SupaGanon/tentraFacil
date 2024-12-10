@@ -1,0 +1,35 @@
+.registro{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 900px;
+    height: auto;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.foto{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    border: solid 0px black;
+}
+.contrasena {
+    position: relative;
+  }
+  
+.confirmar-contrasena {
+    position: relative;
+  }
+  
+.contrasena ion-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  

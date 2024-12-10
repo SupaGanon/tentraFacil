@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro de Accesos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="loadRegistros()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro de Accesos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="buscarRegistro()" placeholder="Buscar por nombre, usuario, fecha, tipo de acceso o tipo de usuario"></ion-searchbar>
+  
+  <ion-list>
+    <ion-item *ngFor="let registro of filteredRegistros">
+      <ion-label>
+        <h2>{{ registro.Nombre }} {{ registro.apellido }}</h2>
+        <p>Fecha: {{ registro.created_at }}</p>
+        <p>Tipo de Acceso: {{ registro.tipoClave }}</p>
+        <p>Tipo de Usuario: {{ registro.tipoAcceso }}</p>
+        <p>Usuario: {{ registro.id_usuario }}</p>
+        <p *ngIf="registro.error" style="color: red;">Error: {{ registro.error }}</p> <!-- Mostrar mensaje de error si existe -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

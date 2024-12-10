@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <div class="registro">
+    <div class="foto">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </div>
+    <ion-grid style="max-width: 700px; margin: auto;">
+      <ion-row>
+        <ion-col class="nombre">
+          <ion-input label="Nombre" label-placement="floating" fill="outline" placeholder="Nombre" [(ngModel)]="nombre" required></ion-input>
+        </ion-col>
+        <ion-col class="apellido">
+          <ion-input label="Apellido" label-placement="floating" fill="outline" placeholder="Apellido" [(ngModel)]="apellido" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="id_usuario">
+          <ion-input label="ID Usuario" label-placement="floating" fill="outline" placeholder="ID Usuario (mínimo 6 caracteres)" [(ngModel)]="id_usuario" maxlength="10" minlength="6" required (ionInput)="validarIDUsuario()" [pattern]="idUsuarioPattern"></ion-input>
+        </ion-col>
+        <ion-col class="email">
+          <ion-input label="Email" label-placement="floating" fill="outline" placeholder="Email" [(ngModel)]="email" type="email" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="rol">
+          <ion-select label="Tipo de Usuario" label-placement="floating" placeholder="Selecciona un tipo de usuario" [(ngModel)]="rol" required>
+            <ion-select-option value="admin">Administrador</ion-select-option>
+            <ion-select-option value="usuario">Usuario</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="contrasena" style="position: relative;">
+          <ion-input [type]="passwordType" label="Contraseña" label-placement="floating" fill="outline" placeholder="Contraseña" [(ngModel)]="password" required></ion-input>
+          <ion-icon name="eye-outline" (click)="togglePasswordVisibility()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 10;"></ion-icon>
+        </ion-col>
+        <ion-col class="confirmar-contrasena" style="position: relative;">
+          <ion-input [type]="confirmarPasswordType" label="Confirmar Contraseña" label-placement="floating" fill="outline" placeholder="Confirmar Contraseña" [(ngModel)]="confirmarPassword" required></ion-input>
+          <ion-icon name="eye-outline" (click)="toggleConfirmarPasswordVisibility()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 10;"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-button expand="block" (click)="registrarUsuario()">Registrar</ion-button>
+    </ion-grid>
+  </div>
+</ion-content>

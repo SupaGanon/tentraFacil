@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" class="content">
+  <div class="container ion-text-center">
+    <ion-label>Log in</ion-label>
+    <p></p>
+    <img src="./assets/logo.jpg" alt="Logo">
+  </div>
+  <form [formGroup]="authForm">
+    <ion-card class="usuario">
+      <ion-input label="ID Usuario:" formControlName="usuario" type="text" placeholder="Ingrese su ID de usuario" required></ion-input>
+      <div *ngIf="authForm.get('usuario').invalid && authForm.get('usuario').touched">
+        <small *ngIf="authForm.get('usuario').errors?.['required']">El ID de usuario es obligatorio.</small>
+      </div>
+    </ion-card>
+    <ion-card class="pass">
+      <ion-input label="Password:" formControlName="password" [type]="passwordType" required></ion-input>
+      <ion-icon name="eye-outline" (click)="togglePasswordVisibility()" slot="end" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></ion-icon>
+      <div *ngIf="authForm.get('password').invalid && authForm.get('password').touched">
+        <small *ngIf="authForm.get('password').errors?.['required']">La contraseña es obligatoria.</small>
+        <small *ngIf="authForm.get('password').errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</small>
+      </div>
+    </ion-card>
+    <ion-label color="danger" (click)="forgotPassword()">
+      Olvide mi contraseña
+    </ion-label>
+    <ion-button (click)="Entrar()" class="btn_entrar" shape="round" expand="block" color="danger" [disabled]="authForm.invalid">
+      Entrar
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,47 +1,35 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController, ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { AuthService } from '../core/service/auth-service.service';
-import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { NavController, ToastController, AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-home-web',
+  templateUrl: './home-web.page.html',
+  styleUrls: ['./home-web.page.scss'],
 })
-export class HomePage implements OnInit {
-  id_usuario: string;
-  rol: any;
-  tokenUser: any;
+export class HomeWebPage implements OnInit {
   nombre: string;
   apellido: string;
-  photoUrl: string = '';
-  httpa: any;
+  status: string;
+  rol: string;
+  id_usuario: string;
+  photoUrl: string;
+  tokenUser: string;
+  selectedTab: string = 'registro';
 
   constructor(
-    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+    private cookieService: CookieService,
     private navCtrl: NavController,
     private toastCtrl: ToastController,
-    private alertController: AlertController,
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private alertController: AlertController
   ) {}
 
   ngOnInit(): void {
-    const user = this.authService.getCurrentUser();
-
-    if (!this.authService.isAuthenticated() || !user.activo || user.rol !== 'usuario' ) {
-      this.router.navigate(['/login']);
-    } else {
-      this.id_usuario = user.id_usuario;
-      this.nombre = user.nombre;
-      this.apellido = user.apellido;
-      this.photoUrl = user.photoUrl;
-    }
-
-    console.log(this.id_usuario);
+    
   }
 
   config() {
@@ -78,23 +66,11 @@ export class HomePage implements OnInit {
     );
   }
 
-  async Abrir() { 
-    this.authService.activarRele().subscribe( 
-      response => { 
-        console.log('Respuesta del servidor ESP32:', response); 
-        this.showToast('Acceso confirmado, adelante.', 'success'); 
-      }, 
-      error => { console.error('Error al enviar la solicitud al servidor ESP32:', error); 
-        this.showToast('Acceso confirmado, adelante.', 'success'); 
-      }
-    );
-  }
-
   private async showToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({
       message,
       color,
-      duration: 3000,
+      duration: 2000,
       position: 'bottom',
     });
     await toast.present();
